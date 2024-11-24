@@ -13,7 +13,7 @@
 //This defines the userSetting function
 function setSettings() {
     //Logs the users username
-    const username = localStorage.getItem("name")
+    const userName = localStorage.getItem("name")
     //Logs the background color
     const backgroundColor = localStorage.getItem("backgroundColor")
     //Logs the foreground color
@@ -28,7 +28,33 @@ function setSettings() {
     }
     //Greeting alert
     if (username) {
-        document.getElementById("greeting").textContent = `Hello, ${username}!`;
+        document.getElementById("greeting").textContent = `Hello, ${userName}!`;
     }
 }
 
+// Function to save preferences
+function userSettings(event) {
+    event.preventDefault();  // Prevent form from submitting
+    
+    // Get the values from the form
+    const name = document.getElementById('name').value;
+    const backgroundColor = document.getElementById('background-color').value;
+    const foregroundColor = document.getElementById('foreground-color').value;
+    
+    // Store values in localStorage
+    localStorage.setItem('username', name);
+    localStorage.setItem('backgroundColor', backgroundColor);
+    localStorage.setItem('foregroundColor', foregroundColor);
+    
+    // Notify the user that preferences have been saved
+    alert('Preferences saved!');
+    
+    // Apply the new preferences immediately
+    setSettings();
+}
+
+// Add event listener to the form submission
+document.getElementById('preferences-form').addEventListener('submit', userSettings);
+
+// Apply saved preferences when the page loads
+window.onload = setSettings;
