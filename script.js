@@ -9,3 +9,15 @@
 // also want to call this function again when the user saves their preferences to
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
+
+//This defines the userSetting function
+function userSettings() {
+    //Logs the users username
+    const username = localStorage.getItem("name")
+    //Logs the background color
+    const backgroundColor = localStorage.getItem("backgroundColor")
+    //Logs the foreground color
+    const foregroundColor = localStorage.getItem("foregroundColor")
+
+    
+}
