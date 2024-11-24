@@ -11,13 +11,24 @@
 // were saved.
 
 //This defines the userSetting function
-function userSettings() {
+function setSettings() {
     //Logs the users username
     const username = localStorage.getItem("name")
     //Logs the background color
     const backgroundColor = localStorage.getItem("backgroundColor")
     //Logs the foreground color
     const foregroundColor = localStorage.getItem("foregroundColor")
-
-    
+    //Applies new BG color
+    if (backgroundColor) {
+        document.body.style.backgroundColor = backgroundColor;
+    }
+    //Applies New FG color
+    if (foregroundColor) {
+        document.body.style.color = foregroundColor;
+    }
+    //Greeting alert
+    if (username) {
+        document.getElementById("greeting").textContent = `Hello, ${username}!`;
+    }
 }
+
