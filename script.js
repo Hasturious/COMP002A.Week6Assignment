@@ -10,23 +10,23 @@
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
 
-//This defines the userSetting function
+// This defines the userSetting function
 function setSettings() {
-    //Logs the users username
+    // Logs the users username
     const userName = localStorage.getItem("name")
-    //Logs the background color
+    // Logs the background color
     const backgroundColor = localStorage.getItem("backgroundColor")
-    //Logs the foreground color
+    // Logs the foreground color
     const foregroundColor = localStorage.getItem("foregroundColor")
-    //Applies new BG color
+    // Applies the new BG color
     if (backgroundColor) {
         document.body.style.backgroundColor = backgroundColor;
     }
-    //Applies New FG color
+    // Applies the new FG color
     if (foregroundColor) {
         document.body.style.color = foregroundColor;
     }
-    //Greeting alert
+    // Greeting alert
     if (username) {
         document.getElementById("greeting").textContent = `Hello, ${userName}!`;
     }
@@ -34,27 +34,28 @@ function setSettings() {
 
 // Function to save preferences
 function userSettings(event) {
-    event.preventDefault();  // Prevent form from submitting
+    // Prevent page from reloading
+    event.preventDefault();
     
     // Get the values from the form
-    const name = document.getElementById('name').value;
-    const backgroundColor = document.getElementById('background-color').value;
-    const foregroundColor = document.getElementById('foreground-color').value;
+    const name = document.getElementById("name").value;
+    const backgroundColor = document.getElementById("background-color").value;
+    const foregroundColor = document.getElementById("foreground-color").value;
     
     // Store values in localStorage
-    localStorage.setItem('username', name);
-    localStorage.setItem('backgroundColor', backgroundColor);
-    localStorage.setItem('foregroundColor', foregroundColor);
+    localStorage.setItem("username", name);
+    localStorage.setItem("backgroundColor", backgroundColor);
+    localStorage.setItem("foregroundColor", foregroundColor);
     
     // Notify the user that preferences have been saved
-    alert('Preferences saved!');
+    alert("Preferences saved!");
     
-    // Apply the new preferences immediately
+    // Apply the new preferences
     setSettings();
 }
 
-// Add event listener to the form submission
-document.getElementById('preferences-form').addEventListener('submit', userSettings);
+// This listens for the form to be submitted
+document.getElementById("preferences-form").addEventListener("submit", userSettings);
 
-// Apply saved preferences when the page loads
+// When the page is loaded the settings are set
 window.onload = setSettings;
